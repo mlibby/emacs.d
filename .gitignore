@@ -3,5 +3,7 @@
 ido.last
 auto-save-list/
 elpa/
+elpy/
+eshell/
 transient/
 .org-id-locations
