@@ -1,5 +1,6 @@
 *~
 \#*
+local.el
 ido.last
 auto-save-list/
 elpa/
@@ -7,3 +8,5 @@ elpy/
 eshell/
 transient/
 .org-id-locations
+projectile-bookmarks.eld
+projectile.cache

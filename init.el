@@ -1,25 +1,3 @@
-(require 'package)
-(add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/") t)
-
-(package-initialize)
-(when (not package-archive-contents)
-  (package-refresh-contents))
-
-(defvar my-packages
-  '(ecb
-    magit
-    elpy
-    flycheck
-    py-autopep8
-    pug-mode
-    ))
-
-(mapc #'(lambda (package)
-	  (unless (package-installed-p package)
-	    (package-install package)))
-      my-packages)
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -32,8 +10,12 @@
  '(custom-enabled-themes '(wheatgrass))
  '(ecb-options-version "2.50")
  '(ecb-source-path '("D:\\Software"))
- '(package-selected-packages '(ecb pug-mode magit elpy))
+ '(package-selected-packages '(projectile-speedbar ecb pug-mode magit elpy))
+ '(projectile-speedbar-enable t)
  '(python-indent-guess-indent-offset nil)
+ '(speedbar-default-position 'left)
+ '(sr-speedbar-default-width 27)
+ '(sr-speedbar-right-side nil)
  '(tool-bar-mode nil))
 
 (custom-set-faces
@@ -43,6 +25,38 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Fira Code" :foundry "outline" :slant normal :weight normal :height 158 :width normal)))))
 
+;; Keyboard stuff
+(setq w32-apps-modifier 'super)
+(global-set-key (kbd "s-d") 'projectile-speedbar-toggle)
+(global-set-key (kbd "C-s") 'save-buffer)
+(global-set-key (kbd "s-s") 'isearch-forward)
+
+;; Package management
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/") t)
+
+(package-initialize)
+(when (not package-archive-contents)
+  (package-refresh-contents))
+
+(defvar my-packages
+  '(elpy
+    flycheck
+    magit
+    projectile
+    projectile-speedbar
+    pug-mode
+    py-autopep8
+    ))
+
+(mapc #'(lambda (package)
+	  (unless (package-installed-p package)
+	    (package-install package)))
+      my-packages)
+
+
+;; Python
 (elpy-enable)
 
 (when (require 'flycheck nil t)
@@ -51,3 +65,16 @@
 
 (require 'py-autopep8)
 (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
+
+;; Projectile
+(projectile-mode +1)
+(define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+(setq projectile-enable-caching t)
+
+;; Speedbar
+(require 'sr-speedbar)
+(require 'projectile-speedbar)
+
+;; Local settings
+(load-file "~/.emacs.d/local.el")
