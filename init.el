@@ -10,7 +10,7 @@
  '(custom-enabled-themes '(wheatgrass))
  '(ecb-options-version "2.50")
  '(ecb-source-path '("D:\\Software"))
- '(package-selected-packages '(projectile-speedbar ecb pug-mode magit elpy))
+ '(package-selected-packages '(powershell projectile-speedbar ecb pug-mode magit elpy))
  '(projectile-speedbar-enable t)
  '(python-indent-guess-indent-offset nil)
  '(speedbar-default-position 'left)
@@ -44,6 +44,7 @@
   '(elpy
     flycheck
     magit
+    powershell
     projectile
     projectile-speedbar
     pug-mode
@@ -78,3 +79,4 @@
 
 ;; Local settings
 (load-file "~/.emacs.d/local.el")
+

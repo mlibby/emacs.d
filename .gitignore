@@ -10,3 +10,4 @@ transient/
 .org-id-locations
 projectile-bookmarks.eld
 projectile.cache
+server/
