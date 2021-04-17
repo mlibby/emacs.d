@@ -32,6 +32,7 @@
 (global-set-key (kbd "s-d") 'projectile-speedbar-toggle)
 (global-set-key (kbd "C-s") 'save-buffer)
 (global-set-key (kbd "s-s") 'isearch-forward)
+(global-set-key (kdb "s-m") 'magit)
 
 ;; Package management
 (require 'package)
