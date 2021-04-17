@@ -32,7 +32,7 @@
 (global-set-key (kbd "s-d") 'projectile-speedbar-toggle)
 (global-set-key (kbd "C-s") 'save-buffer)
 (global-set-key (kbd "s-s") 'isearch-forward)
-(global-set-key (kdb "s-m") 'magit)
+(global-set-key (kbd "s-m") 'magit)
 
 ;; Package management
 (require 'package)
@@ -80,23 +80,18 @@
 (require 'sr-speedbar)
 (require 'projectile-speedbar)
 
-;; Windows
-(when (string-equal system-type "windows-nt")
-  (setq git-bin "C:\\Program Files\\Git\\usr\\bin")
-  (setenv "PATH" (concat (getenv "PATH") ";" git-bin)
-  (add-to-list 'exec-path git-bin))
-
 ;; Local settings
 (setq local-settings-file "~/.emacs.d/local.el")
 (when (file-exists-p local-settings-file)
   (load-file local-settings-file))
 
+;; Windows PATH stuff
+(when (string-equal system-type "windows-nt")
+  (setenv "PATH" (concat "C:/Program Files/Git/usr/bin;" (getenv "PATH")))
+  (setenv "PATH" (concat "C:/Users/m/AppData/Roaming/Python/Python39/Scripts;" (getenv "PATH")))
+  (add-to-list 'exec-path "C:/Program Files/Git/usr/bin")
+  (add-to-list 'exec-path "C:/Users/m/AppData/Roaming/Python/Python39/Scripts"))
+
 ;; Some last things
 (grep-compute-defaults)
 
-
-;; Windows PATH stuff
-(setenv "PATH" (concat "C:/Program Files/Git/usr/bin;" (getenv "PATH")))
-(setenv "PATH" (concat "C:/Users/m/AppData/Roaming/Python/Python39/Scripts;" (getenv "PATH")))
-(add-to-list 'exec-path "C:/Program Files/Git/usr/bin")
-(add-to-list 'exec-path "C:/Users/m/AppData/Roaming/Python/Python39/Scripts")
