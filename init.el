@@ -10,13 +10,15 @@
  '(custom-enabled-themes '(wheatgrass))
  '(ecb-options-version "2.50")
  '(ecb-source-path '("D:\\Software"))
- '(package-selected-packages '(powershell projectile-speedbar ecb pug-mode magit elpy))
+ '(package-selected-packages
+   '(ag powershell projectile-speedbar ecb pug-mode magit elpy))
  '(projectile-speedbar-enable t)
  '(python-indent-guess-indent-offset nil)
  '(speedbar-default-position 'left)
  '(sr-speedbar-default-width 27)
  '(sr-speedbar-right-side nil)
- '(tool-bar-mode nil))
+ '(tool-bar-mode nil)
+ '(w32-system-shells '("powershell" "powershell.exe")))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -30,6 +32,7 @@
 (global-set-key (kbd "s-d") 'projectile-speedbar-toggle)
 (global-set-key (kbd "C-s") 'save-buffer)
 (global-set-key (kbd "s-s") 'isearch-forward)
+(global-set-key (kdb "s-m") 'magit)
 
 ;; Package management
 (require 'package)
@@ -77,8 +80,20 @@
 (require 'sr-speedbar)
 (require 'projectile-speedbar)
 
+;; Windows
+(when (string-equal system-type "windows-nt")
+  (setq git-bin "C:\\Program Files\\Git\\usr\\bin")
+  (setenv "PATH" (concat (getenv "PATH") ";" git-bin)
+  (add-to-list 'exec-path git-bin))
+
 ;; Local settings
-(load-file "~/.emacs.d/local.el")
+(setq local-settings-file "~/.emacs.d/local.el")
+(when (file-exists-p local-settings-file)
+  (load-file local-settings-file))
+
+;; Some last things
+(grep-compute-defaults)
+
 
 ;; Windows PATH stuff
 (setenv "PATH" (concat "C:/Program Files/Git/usr/bin;" (getenv "PATH")))
