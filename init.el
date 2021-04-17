@@ -80,3 +80,8 @@
 ;; Local settings
 (load-file "~/.emacs.d/local.el")
 
+;; Windows PATH stuff
+(setenv "PATH" (concat "C:/Program Files/Git/usr/bin;" (getenv "PATH")))
+(setenv "PATH" (concat "C:/Users/m/AppData/Roaming/Python/Python39/Scripts;" (getenv "PATH")))
+(add-to-list 'exec-path "C:/Program Files/Git/usr/bin")
+(add-to-list 'exec-path "C:/Users/m/AppData/Roaming/Python/Python39/Scripts")
