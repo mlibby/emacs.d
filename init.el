@@ -15,10 +15,11 @@
  '(projectile-speedbar-enable t)
  '(python-indent-guess-indent-offset nil)
  '(speedbar-default-position 'left)
+ '(speedbar-directory-unshown-regexp "^$")
+ '(speedbar-show-unknown-files t)
  '(sr-speedbar-default-width 27)
  '(sr-speedbar-right-side nil)
- '(tool-bar-mode nil)
- '(w32-system-shells '("powershell" "powershell.exe")))
+ '(tool-bar-mode nil))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
