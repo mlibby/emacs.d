@@ -11,10 +11,11 @@
  '(ecb-options-version "2.50")
  '(ecb-source-path '("D:\\Software"))
  '(package-selected-packages
-   '(ag powershell projectile-speedbar ecb pug-mode magit elpy))
+   '(ido-vertical-mode ag powershell projectile-speedbar ecb pug-mode magit elpy))
  '(projectile-speedbar-enable t)
  '(python-indent-guess-indent-offset nil)
  '(speedbar-default-position 'left)
+ '(speedbar-show-unknown-files t)
  '(sr-speedbar-default-width 27)
  '(sr-speedbar-right-side nil)
  '(tool-bar-mode nil))
@@ -45,6 +46,7 @@
 (defvar my-packages
   '(elpy
     flycheck
+    ido-vertical-mode
     magit
     powershell
     projectile
@@ -68,6 +70,12 @@
 
 (require 'py-autopep8)
 (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
+
+;; IDO vertical
+(require 'ido-vertical-mode)
+(ido-mode 1)
+(ido-vertical-mode 1)
+(setq ido-vertical-define-keys 'C-n-and-C-p-only)
 
 ;; Projectile
 (projectile-mode +1)
