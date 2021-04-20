@@ -15,6 +15,7 @@
  '(projectile-speedbar-enable t)
  '(python-indent-guess-indent-offset nil)
  '(speedbar-default-position 'left)
+ '(speedbar-directory-unshown-regexp "^$")
  '(speedbar-show-unknown-files t)
  '(sr-speedbar-default-width 27)
  '(sr-speedbar-right-side nil)
