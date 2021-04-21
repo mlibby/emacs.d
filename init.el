@@ -10,15 +10,19 @@
  '(custom-enabled-themes '(wheatgrass))
  '(ecb-options-version "2.50")
  '(ecb-source-path '("D:\\Software"))
+ '(indent-tabs-mode nil)
  '(package-selected-packages
    '(ido-vertical-mode ag powershell projectile-speedbar ecb pug-mode magit elpy))
  '(projectile-speedbar-enable t)
+ '(pug-tab-width 2)
  '(python-indent-guess-indent-offset nil)
  '(speedbar-default-position 'left)
  '(speedbar-directory-unshown-regexp "^$")
  '(speedbar-show-unknown-files t)
+ '(speedbar-verbosity-level 0)
  '(sr-speedbar-default-width 27)
  '(sr-speedbar-right-side nil)
+ '(tab-width 4)
  '(tool-bar-mode nil))
 
 (custom-set-faces
