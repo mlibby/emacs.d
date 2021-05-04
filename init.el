@@ -11,8 +11,10 @@
  '(ecb-options-version "2.50")
  '(ecb-source-path '("D:\\Software"))
  '(indent-tabs-mode nil)
+ '(js-indent-level 2)
+ '(js-jsx-indent-level 2)
  '(package-selected-packages
-   '(ido-vertical-mode ag powershell projectile-speedbar ecb pug-mode magit elpy))
+   '(lsp-ui lsp-mode vue-mode realgud ido-vertical-mode ag powershell projectile-speedbar ecb pug-mode magit elpy))
  '(projectile-speedbar-enable t)
  '(pug-tab-width 2)
  '(python-indent-guess-indent-offset nil)
@@ -48,22 +50,26 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-(defvar my-packages
-  '(elpy
-    flycheck
-    ido-vertical-mode
-    magit
-    powershell
-    projectile
-    projectile-speedbar
-    pug-mode
-    py-autopep8
-    ))
+;; (defvar my-packages
+;;   '(elpy
+;;     flycheck
+;;     ido-vertical-mode
+;;     lsp-mode
+;;     magit
+;;     powershell
+;;     projectile
+;;     projectile-speedbar
+;;     pug-mode
+;;     py-autopep8
+;;     realgud
+;;     selectrum
+;;     vue-mode
+;;     ))
 
-(mapc #'(lambda (package)
-	  (unless (package-installed-p package)
-	    (package-install package)))
-      my-packages)
+;; (mapc #'(lambda (package)
+;; 	  (unless (package-installed-p package)
+;; 	    (package-install package)))
+;;       my-packages)
 
 
 ;; Python
@@ -76,11 +82,24 @@
 (require 'py-autopep8)
 (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
 
+;; Node/Vue
+(require 'lsp-mode)
+(add-hook 'vue-mode-hook 'lsp)
+(add-hook 'mmm-mode-hook
+          (lambda ()
+            (set-face-background 'mmm-default-submode-face nil)))
+
 ;; IDO vertical
-(require 'ido-vertical-mode)
-(ido-mode 1)
-(ido-vertical-mode 1)
-(setq ido-vertical-define-keys 'C-n-and-C-p-only)
+;; (require 'ido-vertical-mode)
+;; (ido-mode 1)
+;; (ido-vertical-mode 1)
+;; (setq ido-vertical-define-keys 'C-n-and-C-p-only)
+
+;; Selectrum
+(selectrum-mode +1)
+(selectrum-prescient-mode +1)
+(prescient-persist-mode +1)
+(savehist-mode)
 
 ;; Projectile
 (projectile-mode +1)
@@ -106,4 +125,4 @@
 
 ;; Some last things
 (grep-compute-defaults)
-
+(setq-default buffer-file-coding-system 'utf-8-unix)

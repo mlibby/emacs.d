@@ -6,8 +6,11 @@ auto-save-list/
 elpa/
 elpy/
 eshell/
+history
 transient/
 .org-id-locations
 projectile-bookmarks.eld
 projectile.cache
 server/
+.lsp-session-*
+var/
