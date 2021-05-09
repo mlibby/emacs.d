@@ -14,7 +14,7 @@
  '(js-indent-level 2)
  '(js-jsx-indent-level 2)
  '(package-selected-packages
-   '(lsp-ui lsp-mode vue-mode realgud ido-vertical-mode ag powershell projectile-speedbar ecb pug-mode magit elpy))
+   '(neotree lsp-ui lsp-mode vue-mode realgud ido-vertical-mode ag powershell projectile-speedbar ecb pug-mode magit elpy))
  '(projectile-speedbar-enable t)
  '(pug-tab-width 2)
  '(python-indent-guess-indent-offset nil)
@@ -109,8 +109,13 @@
 (setq projectile-enable-caching t)
 
 ;; Speedbar
-(require 'sr-speedbar)
-(require 'projectile-speedbar)
+;; (require 'sr-speedbar)
+;; (require 'projectile-speedbar)
+
+;; NeoTree (is it better than Speedbar for Projectile)
+(require 'neotree)
+(global-set-key (kbd "s-n") 'neotree-toggle)
+(setq projectile-switch-project-action 'neotree-projectile-action)
 
 ;; Local settings
 (setq local-settings-file "~/.emacs.d/local.el")
