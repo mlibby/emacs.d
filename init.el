@@ -7,7 +7,7 @@
    [default default default italic underline success warning error])
  '(ansi-color-names-vector
    ["#2e3436" "#a40000" "#4e9a06" "#c4a000" "#204a87" "#5c3566" "#729fcf" "#eeeeec"])
- '(custom-enabled-themes '(wheatgrass))
+ '(custom-enabled-themes '(manoj-dark))
  '(ecb-options-version "2.50")
  '(ecb-source-path '("D:\\Software"))
  '(indent-tabs-mode nil)
