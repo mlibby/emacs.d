@@ -13,10 +13,8 @@
  '(indent-tabs-mode nil)
  '(js-indent-level 2)
  '(js-jsx-indent-level 2)
- '(neo-hidden-regexp-list
-   '("\\.pyc$" "~$" "^#.*#$" "\\.elc$" "\\.o$" "^\\.git$" "^\\.pytest_cache$" "^node_modules$" "^__pycache__$"))
  '(package-selected-packages
-   '(emojify neotree lsp-ui lsp-mode vue-mode realgud ido-vertical-mode ag powershell projectile-speedbar ecb pug-mode magit elpy))
+   '(py-autopep8 neotree lsp-ui lsp-mode vue-mode realgud ido-vertical-mode ag powershell projectile-speedbar ecb pug-mode magit elpy))
  '(projectile-speedbar-enable t)
  '(pug-tab-width 2)
  '(python-indent-guess-indent-offset nil)
