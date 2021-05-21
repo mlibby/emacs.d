@@ -53,27 +53,6 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
-;; (defvar my-packages
-;;   '(elpy
-;;     flycheck
-;;     ido-vertical-mode
-;;     lsp-mode
-;;     magit
-;;     powershell
-;;     projectile
-;;     projectile-speedbar
-;;     pug-mode
-;;     py-autopep8
-;;     realgud
-;;     selectrum
-;;     vue-mode
-;;     ))
-
-;; (mapc #'(lambda (package)
-;; 	  (unless (package-installed-p package)
-;; 	    (package-install package)))
-;;       my-packages)
-
 
 ;; Python
 (elpy-enable)
