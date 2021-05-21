@@ -11,12 +11,12 @@
  '(ecb-options-version "2.50")
  '(ecb-source-path '("D:\\Software"))
  '(indent-tabs-mode nil)
- '(js-indent-level 2)
- '(js-jsx-indent-level 2)
+ '(js-indent-level 4)
+ '(js-jsx-indent-level 4)
  '(neo-hidden-regexp-list
    '("\\.pyc$" "~$" "^#.*#$" "\\.elc$" "\\.o$" "^\\.git$" "^\\.pytest_cache$" "^node_modules$" "^__pycache__$"))
  '(package-selected-packages
-   '(selectrum selectrum-prescient py-autopep8 neotree lsp-ui lsp-mode vue-mode realgud ido-vertical-mode ag powershell projectile-speedbar ecb pug-mode magit elpy))
+   '(flymake flymake-python-pyflakes selectrum selectrum-prescient py-autopep8 neotree lsp-ui lsp-mode vue-mode realgud ido-vertical-mode ag powershell projectile-speedbar ecb pug-mode magit elpy))
  '(projectile-speedbar-enable t)
  '(pug-tab-width 2)
  '(python-indent-guess-indent-offset nil)
@@ -27,7 +27,8 @@
  '(sr-speedbar-default-width 27)
  '(sr-speedbar-right-side nil)
  '(tab-width 4)
- '(tool-bar-mode nil))
+ '(tool-bar-mode nil)
+ '(vue-html-tab-width 4))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -71,12 +72,6 @@
           (lambda ()
             (set-face-background 'mmm-default-submode-face nil)))
 
-;; IDO vertical
-;; (require 'ido-vertical-mode)
-;; (ido-mode 1)
-;; (ido-vertical-mode 1)
-;; (setq ido-vertical-define-keys 'C-n-and-C-p-only)
-
 ;; Selectrum
 (selectrum-mode +1)
 (selectrum-prescient-mode +1)
@@ -90,13 +85,13 @@
 (setq projectile-enable-caching t)
 
 ;; Speedbar
-;; (require 'sr-speedbar)
-;; (require 'projectile-speedbar)
+(require 'sr-speedbar)
+(require 'projectile-speedbar)
 
-;; NeoTree > Speedbar
-(require 'neotree)
-(global-set-key (kbd "s-n") 'neotree-toggle) 
-(setq projectile-switch-project-action 'neotree-projectile-action)
+;; NeoTree 
+;; (require 'neotree)
+;; (global-set-key (kbd "s-n") 'neotree-toggle) 
+;; (setq projectile-switch-project-action 'neotree-projectile-action)
 
 ;; Local settings
 (setq local-settings-file "~/.emacs.d/local.el")
