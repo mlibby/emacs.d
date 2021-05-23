@@ -14,10 +14,6 @@
  '(jedi:complete-on-dot t)
  '(js-indent-level 4)
  '(js-jsx-indent-level 4)
- '(lsp-vetur-format-default-formatter-css "none")
- '(lsp-vetur-format-default-formatter-html "none")
- '(lsp-vetur-format-default-formatter-js "none")
- '(lsp-vetur-validation-template nil)
  '(neo-hidden-regexp-list
    '("\\.pyc$" "~$" "^#.*#$" "\\.elc$" "\\.o$" "^\\.git$" "^\\.pytest_cache$" "^node_modules$" "^__pycache__$"))
  '(package-selected-packages
@@ -80,11 +76,17 @@
 
 (add-hook 'python-mode-hook (add-to-list 'company-backends 'company-jedi))                           
 
+
 ;;
 ;; Node/Vue
 (require 'lsp-mode)
-(add-hook 'vue-mode 'prettier-js-mode)
+;;(add-hook 'vue-mode 'prettier-js-mode)
 (add-hook 'vue-mode-hook 'lsp-vetur)
+
+;; (lsp-vetur-format-default-formatter-css "none")
+;; (lsp-vetur-format-default-formatter-html "none")
+;; (lsp-vetur-format-default-formatter-js "none")
+;; (lsp-vetur-validation-template nil)
 
 
 ;;
