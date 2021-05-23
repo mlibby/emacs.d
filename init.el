@@ -80,15 +80,16 @@
 
 ;;
 ;; Node/Vue
+(require 'mmm-mode)
+(require 'vue-mode)
 (require 'lsp-mode)
-;;(add-hook 'vue-mode 'prettier-js-mode)
-(add-hook 'vue-mode-hook 'lsp-vetur)
-
-;; (lsp-vetur-format-default-formatter-css "none")
-;; (lsp-vetur-format-default-formatter-html "none")
-;; (lsp-vetur-format-default-formatter-js "none")
-;; (lsp-vetur-validation-template nil)
-
+(require 'prettier-js)
+(add-hook 'mmm-mode-hook
+          (lambda ()
+            (set-face-background 'mmm-default-submode-face nil)))
+(add-hook 'mmm-mode-hook 'prettier-js)
+(define-key mmm-mode-map (kbd "C-M-\\") 'prettier-js)
+(add-hook 'vue-mode-hook 'lsp)
 
 ;;
 ;; Selectrum
@@ -106,15 +107,15 @@
 
 ;;
 ;; Speedbar
-;; (global-set-key (kbd "s-d") 'projectile-speedbar-toggle)
-;; (require 'sr-speedbar)
-;; (require 'projectile-speedbar)
+(global-set-key (kbd "s-d") 'projectile-speedbar-toggle)
+(require 'sr-speedbar)
+(require 'projectile-speedbar)
 
 ;;
 ;; NeoTree 
-(require 'neotree)
-(global-set-key (kbd "s-d") 'neotree-toggle) 
-(setq projectile-switch-project-action 'neotree-projectile-action)
+;; (require 'neotree)
+;; (global-set-key (kbd "s-d") 'neotree-toggle) 
+;; (setq projectile-switch-project-action 'neotree-projectile-action)
 
 ;;
 ;; Local settings
