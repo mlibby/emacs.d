@@ -27,8 +27,7 @@
  '(sr-speedbar-default-width 27)
  '(sr-speedbar-right-side nil)
  '(tab-width 4)
- '(tool-bar-mode nil)
- '(vue-html-tab-width 4))
+ '(tool-bar-mode nil))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -53,7 +52,6 @@
 (package-initialize)
 (when (not package-archive-contents)
   (package-refresh-contents))
-
 
 ;; Python
 (elpy-enable)
