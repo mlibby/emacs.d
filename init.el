@@ -11,12 +11,13 @@
  '(ecb-options-version "2.50")
  '(ecb-source-path '("D:\\Software"))
  '(indent-tabs-mode nil)
+ '(jedi:complete-on-dot t)
  '(js-indent-level 4)
  '(js-jsx-indent-level 4)
  '(neo-hidden-regexp-list
    '("\\.pyc$" "~$" "^#.*#$" "\\.elc$" "\\.o$" "^\\.git$" "^\\.pytest_cache$" "^node_modules$" "^__pycache__$"))
  '(package-selected-packages
-   '(flymake flymake-python-pyflakes selectrum selectrum-prescient py-autopep8 neotree lsp-ui lsp-mode vue-mode realgud ido-vertical-mode ag powershell projectile-speedbar ecb pug-mode magit elpy))
+   '(vue-mode prettier-js company-jedi auto-virtualenv python-black flymake flymake-python-pyflakes selectrum selectrum-prescient neotree lsp-ui lsp-mode realgud ido-vertical-mode ag powershell projectile-speedbar ecb pug-mode magit elpy))
  '(projectile-speedbar-enable t)
  '(pug-tab-width 2)
  '(python-indent-guess-indent-offset nil)
@@ -36,14 +37,15 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Fira Code" :foundry "outline" :slant normal :weight normal :height 158 :width normal)))))
 
+;;
 ;; Keyboard stuff
 (setq w32-apps-modifier 'super)
-(global-set-key (kbd "s-d") 'projectile-speedbar-toggle)
 (global-set-key (kbd "C-s") 'save-buffer)
 (global-set-key (kbd "s-s") 'isearch-forward)
 (define-key isearch-mode-map (kbd "s-s") 'isearch-repeat-forward)
 (global-set-key (kbd "s-m") 'magit)
 
+;;
 ;; Package management
 (require 'package)
 (add-to-list 'package-archives
@@ -53,49 +55,74 @@
 (when (not package-archive-contents)
   (package-refresh-contents))
 
+;;
 ;; Python
 (elpy-enable)
-
+(require 'company-jedi)
 (when (require 'flycheck nil t)
   (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
   (add-hook 'elpy-mode-hook 'flycheck-mode))
 
-(require 'py-autopep8)
-(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
+(require 'auto-virtualenv)
+(add-hook 'python-mode-hook 'auto-virtualenv-set-virtualenv)
+;; Activate on changing buffers
+(add-hook 'window-configuration-change-hook 'auto-virtualenv-set-virtualenv)
+;; Activate on focus in
+(add-hook 'focus-in-hook 'auto-virtualenv-set-virtualenv)
 
+(define-key elpy-mode-map (kbd "<C-tab>") 'elpy-company-backend)
+(define-key elpy-mode-map (kbd "C-M-\\") 'python-black-buffer)
+
+(defun my/python-mode-hook ()
+  (add-to-list 'company-backends 'company-jedi))
+(add-hook 'python-mode-hook 'my/python-mode-hook)        
+
+;;
 ;; Node/Vue
+(require 'mmm-mode)
+(require 'vue-mode)
 (require 'lsp-mode)
-(add-hook 'vue-mode-hook 'lsp)
+(require 'prettier-js)
 (add-hook 'mmm-mode-hook
           (lambda ()
             (set-face-background 'mmm-default-submode-face nil)))
+(add-hook 'mmm-mode-hook 'prettier-js)
+(define-key mmm-mode-map (kbd "C-M-\\") 'prettier-js)
+(add-hook 'vue-mode-hook 'lsp)
 
+;;
 ;; Selectrum
 (selectrum-mode +1)
 (selectrum-prescient-mode +1)
 (prescient-persist-mode +1)
 (savehist-mode)
 
+;;
 ;; Projectile
 (projectile-mode +1)
 (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 (setq projectile-enable-caching t)
 
+;;
 ;; Speedbar
+(global-set-key (kbd "s-d") 'projectile-speedbar-toggle)
 (require 'sr-speedbar)
 (require 'projectile-speedbar)
 
+;;
 ;; NeoTree 
 ;; (require 'neotree)
-;; (global-set-key (kbd "s-n") 'neotree-toggle) 
+;; (global-set-key (kbd "s-d") 'neotree-toggle) 
 ;; (setq projectile-switch-project-action 'neotree-projectile-action)
 
+;;
 ;; Local settings
 (setq local-settings-file "~/.emacs.d/local.el")
 (when (file-exists-p local-settings-file)
   (load-file local-settings-file))
 
+;;
 ;; Windows PATH stuff
 (when (string-equal system-type "windows-nt")
   (setenv "PATH" (concat "C:/Program Files/Git/usr/bin;" (getenv "PATH")))
@@ -103,6 +130,7 @@
   (add-to-list 'exec-path "C:/Program Files/Git/usr/bin")
   (add-to-list 'exec-path "C:/Users/m/AppData/Roaming/Python/Python39/Scripts"))
 
+;;
 ;; Some last things
 (grep-compute-defaults)
 (setq-default buffer-file-coding-system 'utf-8-unix)
