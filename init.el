@@ -7,6 +7,7 @@
    [default default default italic underline success warning error])
  '(ansi-color-names-vector
    ["#2e3436" "#a40000" "#4e9a06" "#c4a000" "#204a87" "#5c3566" "#729fcf" "#eeeeec"])
+ '(create-lockfiles nil)
  '(custom-enabled-themes '(manoj-dark))
  '(ecb-options-version "2.50")
  '(ecb-source-path '("D:\\Software"))
@@ -14,6 +15,7 @@
  '(jedi:complete-on-dot t)
  '(js-indent-level 4)
  '(js-jsx-indent-level 4)
+ '(make-backup-files nil)
  '(neo-hidden-regexp-list
    '("\\.pyc$" "~$" "^#.*#$" "\\.elc$" "\\.o$" "^\\.git$" "^\\.pytest_cache$" "^node_modules$" "^__pycache__$"))
  '(package-selected-packages
