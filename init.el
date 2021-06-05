@@ -42,10 +42,12 @@
 ;;
 ;; Keyboard stuff
 (setq w32-apps-modifier 'super)
-(global-set-key (kbd "C-s") 'save-buffer)
-(global-set-key (kbd "s-s") 'isearch-forward)
 (define-key isearch-mode-map (kbd "s-s") 'isearch-repeat-forward)
+(global-set-key (kbd "C-l") 'downcase-word)
+(global-set-key (kbd "C-s") 'save-buffer)
+(global-set-key (kbd "M-l") 'sort-lines)
 (global-set-key (kbd "s-m") 'magit)
+(global-set-key (kbd "s-s") 'isearch-forward)
 
 ;;
 ;; Package management
