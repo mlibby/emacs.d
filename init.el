@@ -39,6 +39,8 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Fira Code" :foundry "outline" :slant normal :weight normal :height 158 :width normal)))))
 
+(add-to-list 'load-path "~/.emacs.d/elisp")
+
 ;;
 ;; Keyboard stuff
 (setq w32-apps-modifier 'super)
@@ -58,6 +60,28 @@
 (package-initialize)
 (when (not package-archive-contents)
   (package-refresh-contents))
+
+;;
+;; Ligatures
+(require 'ligature)
+
+;; Enable ligatures in programming modes
+(defvar my/ligatures '(
+                       "www" "**" "***" "**/" "*>" "*/" "\\\\" "\\\\\\" "{-" "::"
+                       ":::" ":=" "!!" "!=" "!==" "-}" "----" "-->" "->" "->>"
+                       "-<" "-<<" "-~" "#{" "#[" "##" "###" "####" "#(" "#?" "#_"
+                       "#_(" ".-" ".=" ".." "..<" "..." "?=" "??" ";;" "/*" "/**"
+                       "/=" "/==" "/>" "//" "///" "&&" "||" "||=" "|=" "|>" "^=" "$>"
+                       "++" "+++" "+>" "=:=" "==" "===" "==>" "=>" "=>>" "<="
+                       "=<<" "=/=" ">-" ">=" ">=>" ">>" ">>-" ">>=" ">>>" "<*"
+                       "<*>" "<|" "<|>" "<$" "<$>" "<!--" "<-" "<--" "<->" "<+"
+                       "<+>" "<=" "<==" "<=>" "<=<" "<>" "<<" "<<-" "<<=" "<<<"
+                       "<~" "<~~" "</" "</>" "~@" "~-" "~>" "~~" "~~>" "%%"))
+
+(ligature-set-ligatures 'vue-mode my/ligatures)
+(ligature-set-ligatures 'prog-mode my/ligatures)
+
+(global-ligature-mode 't)
 
 ;;
 ;; Python
