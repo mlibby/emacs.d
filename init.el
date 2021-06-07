@@ -42,13 +42,17 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Fira Code" :foundry "outline" :slant normal :weight normal :height 158 :width normal)))))
 
+(add-to-list 'load-path "~/.emacs.d/elisp")
+
 ;;
 ;; Keyboard stuff
 (setq w32-apps-modifier 'super)
-(global-set-key (kbd "C-s") 'save-buffer)
-(global-set-key (kbd "s-s") 'isearch-forward)
 (define-key isearch-mode-map (kbd "s-s") 'isearch-repeat-forward)
+(global-set-key (kbd "C-l") 'downcase-word)
+(global-set-key (kbd "C-s") 'save-buffer)
+(global-set-key (kbd "M-l") 'sort-lines)
 (global-set-key (kbd "s-m") 'magit)
+(global-set-key (kbd "s-s") 'isearch-forward)
 
 ;;
 ;; Package management
@@ -59,6 +63,28 @@
 (package-initialize)
 (when (not package-archive-contents)
   (package-refresh-contents))
+
+;;
+;; Ligatures
+(require 'ligature)
+
+;; Enable ligatures in programming modes
+(defvar my/ligatures '(
+                       "www" "**" "***" "**/" "*>" "*/" "\\\\" "\\\\\\" "{-" "::"
+                       ":::" ":=" "!!" "!=" "!==" "-}" "----" "-->" "->" "->>"
+                       "-<" "-<<" "-~" "#{" "#[" "##" "###" "####" "#(" "#?" "#_"
+                       "#_(" ".-" ".=" ".." "..<" "..." "?=" "??" ";;" "/*" "/**"
+                       "/=" "/==" "/>" "//" "///" "&&" "||" "||=" "|=" "|>" "^=" "$>"
+                       "++" "+++" "+>" "=:=" "==" "===" "==>" "=>" "=>>" "<="
+                       "=<<" "=/=" ">-" ">=" ">=>" ">>" ">>-" ">>=" ">>>" "<*"
+                       "<*>" "<|" "<|>" "<$" "<$>" "<!--" "<-" "<--" "<->" "<+"
+                       "<+>" "<=" "<==" "<=>" "<=<" "<>" "<<" "<<-" "<<=" "<<<"
+                       "<~" "<~~" "</" "</>" "~@" "~-" "~>" "~~" "~~>" "%%"))
+
+(ligature-set-ligatures 'vue-mode my/ligatures)
+(ligature-set-ligatures 'prog-mode my/ligatures)
+
+(global-ligature-mode 't)
 
 ;;
 ;; Python
