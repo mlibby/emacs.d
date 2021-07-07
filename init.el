@@ -173,3 +173,4 @@
 ;; Some last things
 (grep-compute-defaults)
 (setq-default buffer-file-coding-system 'utf-8-unix)
+(setq global-auto-revert-mode 't)
