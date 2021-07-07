@@ -119,14 +119,21 @@
 ;;
 ;; Node/Vue
 (require 'mmm-mode)
-(require 'vue-mode)
-(require 'lsp-mode)
-(require 'prettier-js)
 (add-hook 'mmm-mode-hook
           (lambda ()
-            (set-face-background 'mmm-default-submode-face nil)))
+            (set-face-background 'mmm-default-submode-face "black")))
+(add-hook 'vue-mode-hook
+          (lambda ()
+            (set-face-background 'mmm-default-submode-face "black")))
+
+(require 'prettier-js)
 (add-hook 'mmm-mode-hook 'prettier-js)
 (define-key mmm-mode-map (kbd "C-M-\\") 'prettier-js)
+;;(add-hook 'js-mode-hook 'prettier-js)
+;;(define-key js-mode-map (kbd "C-M-\\") 'prettier-js)
+
+(require 'vue-mode)
+(require 'lsp-mode)
 (add-hook 'vue-mode-hook 'lsp)
 
 ;;
