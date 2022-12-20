@@ -22,7 +22,7 @@
  '(neo-hidden-regexp-list
    '("\\.pyc$" "~$" "^#.*#$" "\\.elc$" "\\.o$" "^\\.git$" "^\\.pytest_cache$" "^node_modules$" "^__pycache__$"))
  '(package-selected-packages
-   '(vue-mode prettier-js company-jedi auto-virtualenv python-black flymake flymake-python-pyflakes selectrum selectrum-prescient neotree lsp-ui lsp-mode realgud ido-vertical-mode ag powershell projectile-speedbar ecb pug-mode magit elpy))
+   '(elixir-mode vue-mode prettier-js company-jedi auto-virtualenv python-black flymake flymake-python-pyflakes selectrum selectrum-prescient neotree lsp-ui lsp-mode realgud ido-vertical-mode ag powershell projectile-speedbar ecb pug-mode magit elpy))
  '(projectile-speedbar-enable t)
  '(pug-tab-width 2)
  '(python-indent-guess-indent-offset nil)
@@ -50,6 +50,7 @@
 (define-key isearch-mode-map (kbd "s-s") 'isearch-repeat-forward)
 (global-set-key (kbd "C-l") 'downcase-word)
 (global-set-key (kbd "C-s") 'save-buffer)
+(global-set-key (kbd "C-z") 'undo)
 (global-set-key (kbd "M-l") 'sort-lines)
 (global-set-key (kbd "s-m") 'magit)
 (global-set-key (kbd "s-s") 'isearch-forward)
@@ -117,6 +118,19 @@
 (add-hook 'python-mode-hook 'my/python-mode-hook)        
 
 ;;
+;; Elixir
+(add-hook 'elixir-mode-hook
+          (lambda ()
+            (push '(">=" . ?\u2265) prettify-symbols-alist)
+            (push '("<=" . ?\u2264) prettify-symbols-alist)
+            (push '("!=" . ?\u2260) prettify-symbols-alist)
+            (push '("==" . ?\u2A75) prettify-symbols-alist)
+            (push '("=~" . ?\u2245) prettify-symbols-alist)
+            (push '("<-" . ?\u2190) prettify-symbols-alist)
+            (push '("->" . ?\u2192) prettify-symbols-alist)
+            (push '("<-" . ?\u2190) prettify-symbols-alist)
+            (push '("|>" . ?\u25B7) prettify-symbols-alist)))
+;;
 ;; Node/Vue
 (require 'mmm-mode)
 (add-hook 'mmm-mode-hook
@@ -138,10 +152,10 @@
 
 ;;
 ;; Selectrum
-(selectrum-mode +1)
-(selectrum-prescient-mode +1)
-(prescient-persist-mode +1)
-(savehist-mode)
+;;(selectrum-mode +1)
+;;(selectrum-prescient-mode +1)
+;;(prescient-persist-mode +1)
+;;(savehist-mode)
 
 ;;
 ;; Projectile
