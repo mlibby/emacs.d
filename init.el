@@ -50,6 +50,7 @@
 (define-key isearch-mode-map (kbd "s-s") 'isearch-repeat-forward)
 (global-set-key (kbd "C-l") 'downcase-word)
 (global-set-key (kbd "C-s") 'save-buffer)
+(global-set-key (kbd "C-z") 'undo)
 (global-set-key (kbd "M-l") 'sort-lines)
 (global-set-key (kbd "s-m") 'magit)
 (global-set-key (kbd "s-s") 'isearch-forward)
@@ -117,24 +118,44 @@
 (add-hook 'python-mode-hook 'my/python-mode-hook)        
 
 ;;
+;; Elixir
+(add-hook 'elixir-mode-hook
+          (lambda ()
+            (push '(">=" . ?\u2265) prettify-symbols-alist)
+            (push '("<=" . ?\u2264) prettify-symbols-alist)
+            (push '("!=" . ?\u2260) prettify-symbols-alist)
+            (push '("==" . ?\u2A75) prettify-symbols-alist)
+            (push '("=~" . ?\u2245) prettify-symbols-alist)
+            (push '("<-" . ?\u2190) prettify-symbols-alist)
+            (push '("->" . ?\u2192) prettify-symbols-alist)
+            (push '("<-" . ?\u2190) prettify-symbols-alist)
+            (push '("|>" . ?\u25B7) prettify-symbols-alist)))
+;;
 ;; Node/Vue
 (require 'mmm-mode)
-(require 'vue-mode)
-(require 'lsp-mode)
-(require 'prettier-js)
 (add-hook 'mmm-mode-hook
           (lambda ()
-            (set-face-background 'mmm-default-submode-face nil)))
+            (set-face-background 'mmm-default-submode-face "black")))
+(add-hook 'vue-mode-hook
+          (lambda ()
+            (set-face-background 'mmm-default-submode-face "black")))
+
+(require 'prettier-js)
 (add-hook 'mmm-mode-hook 'prettier-js)
 (define-key mmm-mode-map (kbd "C-M-\\") 'prettier-js)
+;;(add-hook 'js-mode-hook 'prettier-js)
+;;(define-key js-mode-map (kbd "C-M-\\") 'prettier-js)
+
+(require 'vue-mode)
+(require 'lsp-mode)
 (add-hook 'vue-mode-hook 'lsp)
 
 ;;
 ;; Selectrum
-(selectrum-mode +1)
-(selectrum-prescient-mode +1)
-(prescient-persist-mode +1)
-(savehist-mode)
+;;(selectrum-mode +1)
+;;(selectrum-prescient-mode +1)
+;;(prescient-persist-mode +1)
+;;(savehist-mode)
 
 ;;
 ;; Projectile
