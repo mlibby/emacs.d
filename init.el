@@ -22,7 +22,7 @@
  '(neo-hidden-regexp-list
    '("\\.pyc$" "~$" "^#.*#$" "\\.elc$" "\\.o$" "^\\.git$" "^\\.pytest_cache$" "^node_modules$" "^__pycache__$"))
  '(package-selected-packages
-   '(vue-mode prettier-js company-jedi auto-virtualenv python-black flymake flymake-python-pyflakes selectrum selectrum-prescient neotree lsp-ui lsp-mode realgud ido-vertical-mode ag powershell projectile-speedbar ecb pug-mode magit elpy))
+   '(elixir-mode vue-mode prettier-js company-jedi auto-virtualenv python-black flymake flymake-python-pyflakes selectrum selectrum-prescient neotree lsp-ui lsp-mode realgud ido-vertical-mode ag powershell projectile-speedbar ecb pug-mode magit elpy))
  '(projectile-speedbar-enable t)
  '(pug-tab-width 2)
  '(python-indent-guess-indent-offset nil)
